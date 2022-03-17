@@ -1,0 +1,20 @@
+   
+<div class="container">
+  <div class="col-md-12">
+    <div class="card-body">
+      <%= form_tag generate_report_path, method: :get do %>
+        <div class="form-group mb-4">
+          <%= label :employee_id, "Seleccionar empleado" %>
+          <%= select_tag :employee_id, options_from_collection_for_select(@employee, "id", "full_name", params[:employee_id]), html_options = {class: "form-control"} %>
+        </div>
+        <div class="form-group mb-4">
+          <%= label :month_year, "Seleccionar la fecha" %>
+          <%= month_field_tag :month_year, options = {}, html_options = { class: "form-control" } %>
+        </div>
+        <div class="form-group w-50">
+          <%= submit_tag(value = "Generar Reporte", options = { class: "btn btn-dark" }) %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

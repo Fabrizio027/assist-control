@@ -1,0 +1,24 @@
+<div class="card shadow mb-4">
+<div class="card-header">Lista de Empleados</div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table id="tablaUsers" class="table table-bordered" width="100%">
+        <thead>
+          <tr>
+            <th>Nombre del Empleado</th>
+            <th>Email</th> 
+          </tr>
+        </thead>
+        <tbody>
+            <% @users.each do |u| %>
+               <tr id="user_<%= u.id %>">
+                <td><%= u.full_name%></td>
+                <td><%= u.email %></td>
+                
+                </tr>
+            <% end %>
+        </tbody>
+      </table>
+      </div>
+    </div>
+  </div>

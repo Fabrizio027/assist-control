@@ -1,0 +1,35 @@
+<div class="card shadow mb-4">
+  <div class="card-header">Reporte de <%= @checks.first.user.full_name%></div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table id="tablaUsers" class="table table-bordered" width="100%">
+        <thead>
+          <tr>
+            <th>Fecha</th>
+            <th>Hora de entrada</th>
+            <th>Hora de salida</th>
+            <th>Horas de trabajo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% horas_mes=0 %>
+          <% @checks.each do |c|%>
+            <tr>
+              <td><%= c.entry_time.strftime("%d-%m-%Y") %></td>
+              <td><%= c.entry_time.strftime("%I:%M %p") %></td>
+              <td><%= c.exit_time ? c.exit_time.strftime("%I:%M %p") : "No hay hora de salida"%></td>
+              <td><%= c.hours_total %></td>
+              <% horas_mes = horas_mes+c.hours_total.to_f%>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <div class="card border-secondary mb-4" style="max-width: 18rem;">
+        <div class="card-body text-dark">
+          <h6>Horas totales de trabajo: <%= horas_mes.round(2) %></h6> 
+        </div>
+      </div>
+      <div>
+      </div>
+    </div>
+  </div>
